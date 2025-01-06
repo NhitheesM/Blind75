@@ -35,3 +35,21 @@ var twoSum = function(nums, target) {
 };
 
 //Rust
+// Hashmap 
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+        let mut numsMap = HashMap::new();
+        for (i, &num) in nums.iter().enumerate(){
+            let complement = target - num;
+            if let Some(&complement_index)= numsMap.get(&complement){
+                return vec![complement_index as i32, i as i32];
+            }
+            numsMap.insert(num,i);
+        }
+        vec![]
+    }
+}
+
+
